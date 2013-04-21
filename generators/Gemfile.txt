@@ -1,0 +1,3 @@
+source :rubygems
+
+gem 'bookstrap', '~> 0.0.1'

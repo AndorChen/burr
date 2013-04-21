@@ -1,0 +1,46 @@
+id:
+  - '{{ item.element }}-{{ item.number }}'
+  - 'section-{{ item.counters | join:"-" }}' # section-1-1
+
+appendix:
+  - '附录 {{ item.number }}'
+  - '{{ item.counters | join:"." }}' # A.1
+
+chapter:
+  - '第 {{ item.number }} 章'
+  - '{{ item.counters | join:"." }}' # 1.1
+
+part:            'Part {{ item.number }}'
+figure:          '图 {{ item.number }}.{{ item.counter }}：'
+table:           '表格 {{ item.number }}.{{ item.counter }}：'
+codeblock:       '代码 {{ item.number }}.{{ item.counter }}：'
+aside:           '旁注 {{ item.number }}.{{ item.counter }}：'
+
+acknowledgement: ''
+afterword:       ''
+author:          ''
+conclusion:      ''
+cover:           ''
+dedication:      ''
+edition:         ''
+epilogue:        ''
+foreword:        ''
+glossary:        ''
+introduction:    ''
+preface:         ''
+prologue:        ''
+title:           ''
+toc:             ''
+
+# Navigation elements
+index:           '索引'
+next:            '下一页'
+previous:        '上一页'
+
+# Special
+date_format:     'm/d/Y'
+datetime_format: 'm/d/Y H:i'
+
+# Other
+by:              'by'
+page:            'page'

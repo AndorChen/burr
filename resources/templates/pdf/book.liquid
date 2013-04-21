@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="{{ config.language }}">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <!-- Metadata used by PrinceXML to set PDF metadata -->
+    <title>{{ config.title }}</title>
+    <meta name="author" content="{% if config.translator %}{{ config.translator }}{% else %}{{ config.author }}{% endif %}" />
+    <meta name="date" content="{{ config.publication_date | date: "%Y-%m-%d" }}" />
+    <meta name="generator" content="{{ generator.name }} v{{ generator.version }}"/>
+
+    <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+
+<body>
+
+{% if frontmatter.size > 0 %}
+<div class="frontmatter">
+{% for item in frontmatter %}
+    {{ item.content }}
+{% endfor %}
+</div>
+{% endif %}
+
+{% if bodymatter.size > 0 %}
+<div class="bodymatter">
+{% for item in bodymatter %}
+    {{ item.content }}
+{% endfor %}
+</div>
+{% endif %}
+
+{% if backmatter.size > 0 %}
+<div class="backmatter">
+{% for item in backmatter %}
+    {{ item.content }}
+{% endfor %}
+</div>
+{% endif %}
+
+</body>
+</html>

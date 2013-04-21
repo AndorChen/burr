@@ -1,0 +1,569 @@
+@charset 'utf-8';
+
+html {
+  margin: 0;
+  font: 10pt/1.5 times, simsun, serif;
+}
+
+body {
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: Helvetica, simhei, sans-serif;
+  font-weight: bold;
+  margin: 1em 0 .5em 0;
+  /*page-break-after: avoid;*/
+}
+
+h1 {
+  border-bottom: 3pt solid #ccc;
+  margin: 0 0 2em 0;
+  padding: 2em 0 .5em 0;
+  font-size: 20pt;
+  text-align: right;
+  string-set: header content();
+}
+
+h2 {
+  font-size: 18pt;
+}
+
+h3 {
+  font-size: 16pt;
+}
+
+h4 {
+  font-size: 14pt;
+  prince-bookmark-level: none;
+}
+
+h5 {
+  font-size: 12pt;
+  prince-bookmark-level: none;
+}
+
+h6 {
+  font-size: 10pt;
+  prince-bookmark-level: none;
+}
+
+q::before {
+  content: "\201C";
+}
+
+q::after {
+  content: "\201D";
+}
+
+p { margin: 1em 0; }
+
+pre {
+  margin: 1em 1.3em;
+  white-space: pre;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+code {
+  font: Courier, monospace;
+}
+
+a {
+  color: #06c;
+  text-decoration: none;
+}
+
+img {
+  prince-image-resolution: 110dpi;
+}
+
+/* cross-references */
+
+a.pageref::after { content: " on page " target-counter(attr(href), page); }
+a.chapref::before { content: " Chapter " target-counter(attr(href), chapter) ", "; }
+a.figref { content: " Figure " target-counter(attr(href), figure); }
+a.tableref { content: " Table " target-counter(attr(href), figure); }
+
+/* sidenotes */
+
+.sidenote {
+  float: left;
+  clear: left;
+  margin: 0 0 1em -41%;
+  width: 37%;
+  font-size: 0.9em;
+  font-style: normal;
+  text-indent: 0;
+  text-align: right;
+  page-break-inside: avoid;
+}
+
+/* sidebars */
+
+div.sidebar {
+  float: top-next;
+  margin: 1.2em 0 1.2em 0;
+  border: thin solid;
+  background: #CCC;
+  padding: 0.5em 1em;
+  page-break-inside: avoid;
+  column-count: 2;
+  column-gap: 1.5em;
+}
+
+div.sidebar h2 {
+  margin-top: 0;
+}
+
+/* figures and tables*/
+
+div.figure {
+  margin: 1em 0;
+  counter-increment: figure;
+}
+
+div.figure img {
+  display: block;
+  margin: 0 auto;
+}
+
+div.figure .caption, div.table .caption {
+  text-align: center;
+}
+
+div.figure .caption span {
+  font-weight: bold;
+}
+
+div.table .caption::before {
+  content: "Table " counter(table) ": ";
+  font-weight: bold;
+}
+
+div.table {
+  margin: 1em 0;
+  counter-increment: table;
+}
+
+div.table th {
+  text-align: left;
+}
+
+table th, table td {
+  text-align: left;
+  padding-right: 1em;
+}
+
+table.lined td, table.lined th {
+  border-top: none;
+  border-bottom: thin dotted;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+}
+
+
+@page {
+  margin: 27mm 16mm 27mm 16mm;
+  size: A4;
+
+  @footnotes {
+    border-top: thin solid black;
+    padding-top: 0.3em;
+  }
+}
+
+
+/* define default page and names pages: cover, blank, frontmatter */
+
+@page :left {
+  @top-left {
+    font: 11pt Times, simsun, serif;
+    content: string(booktitle);
+    vertical-align: bottom;
+    padding-bottom: 2em;
+  }
+
+  @bottom-left {
+    font: 11pt Times, simsun, serif;
+    content: counter(page);
+    padding-top: 2em;
+    vertical-align: top;
+  }
+}
+
+@page :right {
+  @top-right {
+    font: 11pt Times, simsun, serif;
+    content: string(header, first);
+    vertical-align: bottom;
+    padding-bottom: 2em;
+  }
+
+  @bottom-right {
+    font: 11pt Times, simsun, serif;
+    content: counter(page);
+    text-align: right;
+    vertical-align: top;
+    padding-top: 2em;
+  }
+}
+
+@page cover { margin: 0; }
+
+@page frontmatter :left {
+  @top-left {
+    font: 11pt Times, simsun, serif;
+    content: string(title);
+    vertical-align: bottom;
+    padding-bottom: 2em;
+  }
+
+  @bottom-left {
+    font: 11pt Times, simsun, serif;
+    content: counter(page, lower-roman);
+    padding-top: 2em;
+    vertical-align: top;
+  }
+}
+
+@page frontmatter :right {
+  @top-right {
+    font: 11pt Times, simsun, serif;
+    content: string(header, first);
+    vertical-align: bottom;
+    padding-bottom: 2em;
+  }
+
+  @bottom-right {
+    font: 11pt Times, simsun, serif;
+    content: counter(page, lower-roman);
+    text-align: right;
+    vertical-align: top;
+    padding-top: 2em;
+  }
+}
+
+@page blank :left {
+  @top-left { content: normal }
+  @bottom-left { content: normal }
+}
+
+@page blank :right {
+  @top-right { content: normal }
+  @bottom-right { content: normal }
+}
+
+/* page number */
+
+div.bodymatter {
+  counter-reset: page 1;
+}
+
+/* footnotes */
+
+.footnote {
+  display: none;                   /* default rule */
+  display: prince-footnote;        /* prince-specific rules */
+  position: footnote;
+  counter-increment: footnote;
+  font-size: 9pt;
+  line-height: 1.4;
+  footnote-style-position: inside;
+}
+
+.footnote::footnote-call {
+  vertical-align: super;
+  font-size: 8pt;
+}
+
+.footnote::footnote-marker {
+  color: green;
+}
+
+.chapter {
+  counter-reset: footnote;
+}
+
+
+/*
+   A book consists of different types of sections. We propose to use
+   DIV elements with these class names:
+
+    cover
+    halftitlepage: contains the title of the book
+    titlepage: contains the title of the book, name of author(s) and publisher
+    imprint: left page with copyright, publisher, library printing information
+    dedication: right page with short dedication
+    foreword: written by someone other than the author(s)
+    toc: table of contents
+    preface: preface, including acknowledgements
+    chapter: each chapter is given its own DIV element
+    references: contains list of references
+    appendix: each appendix is given its own
+    bibliography
+    glossary
+    index
+    colophon: describes how the book was produced
+    backcover
+
+   A book will use several of the types listed above, but few books
+   will use all of them.
+*/
+
+/* which section uses which named page */
+
+div.halftitlepage, div.titlepage, div.imprint, div.dedication, div.blank { page: blank }
+div.foreword, div.toc, div.preface { page: frontmatter }
+
+
+/* page breaks */
+
+div.cover, div.halftitlepage, div.titlepage { page-break-before: right }
+div.imprint { page-break-before: always }
+div.dedication, div.foreword, div.toc, div.preface, div.chapter, div.reference,
+div.appendix, div.bibliography, div.glossary, div.index, div.colophon {
+  page-break-before: always
+}
+div.backcover { page-break-before: left }
+
+/* the front cover; this code is probably not very reusable by other books */
+
+div.cover { page: cover; }
+
+div.cover img {
+  position: absolute;
+  width: 7in;
+  height: 9.25in;
+  left: 0;
+  top: 0;
+  z-index: -1;
+}
+
+div.cover h1 {
+  border-bottom: none;
+  position: absolute;
+  left: 0;
+  top: 1cm;
+  color: #000;
+  font-size: 32pt;
+  font-weight: normal;
+  text-align: center;
+  width: 100%;
+  prince-bookmark-level: none;
+  string-set: booktitle content();
+}
+
+div.cover h2 {
+  position: absolute;
+  right: 2cm;
+  top: 5cm;
+  color: #000;
+  font-size: 16pt;
+  font-weight: normal;
+  padding: 0.2em 5em 0.2em 1em;
+  letter-spacing: 0.15em;
+  prince-bookmark-level: none;
+}
+
+div.cover h3 {
+  position: absolute;
+  left: 0;
+  top: 7cm;
+  color: #000;
+  font-size: 14pt;
+  font-weight: normal;
+  text-align: center;
+  width: 100%;
+  prince-bookmark-level: none;
+}
+
+div.cover p {
+  position: absolute;
+  left: 2cm;
+  bottom: 1.5cm;
+  font-size: 14pt;
+  color: black;
+  text-transform: uppercase;
+}
+
+div.cover p.edition {
+  left: 15cm;
+  top: 2cm;
+  font-size: 16pt;
+}
+
+/* blank page */
+div.blank p {
+  text-align: center;
+}
+
+/* titlepage, halftitlepage */
+
+div.titlepage h1, div.halftitlepage h1 { margin-bottom: 2em; }
+div.titlepage h2, div.halftitlepage h2 { font-size: 1.2em; margin-bottom: 3em; }
+div.titlepage h3, div.halftitlepage h3 { font-size: 1em; margin-bottom: 3em; }
+div.titlepage p, div.halftitlepage p {
+  font-size: 1.4em;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+}
+
+/* imprint */
+div.imprint p {
+  text-indent: 0;
+  margin-bottom: 1em;
+}
+div.imprint img {
+  width: 200px; height: 157px;
+}
+
+/* TOC */
+
+ol.toc-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+ol.toc-list li.level-1 {
+  font-weight: bold;
+}
+ol.toc-list li.level-2 {
+  margin-left: 3.5em;
+  font-weight: normal;
+}
+ol.toc-list li.level-3 {
+  margin-left: 4.5em;
+  font-weight: normal;
+}
+ol.toc-list a::after {
+  content: leader('.') target-counter(attr(href), page);
+  font-style: normal;
+}
+ol.toc-list li.frontmatter a::after {
+  content: leader('.') target-counter(attr(href), page, lower-roman);
+  font-style: normal;
+}
+ol.toc-list > li.backmatter a::after {
+  content: leader('.') target-counter(attr(href), page);
+  font-style: normal;
+}
+
+ol.toc-list a {
+  color: #000;
+}
+
+/* Aside */
+
+div.aside {
+  background: #eee;
+  padding: 1em;
+}
+
+div.aside h4 {
+  background: #ccc;
+  font-size: 10pt;
+  margin: 0;
+  padding: .5em 1em;
+  text-align: center;
+}
+
+/* index */
+
+ol.index {
+  list-style-type: none;
+  margin: 0; padding: 0;
+  column-count: 2;
+  column-gap: 1em;
+}
+
+ul.index a::after { content: ", " target-counter(attr(href), page); }
+
+/* codeblock */
+
+.codeblock .caption {
+  margin: 0 0 .5em;
+}
+
+.codeblock .caption span {
+  font-weight: bold;
+}
+
+.codeblock .highlight {
+  background: #eee;
+  padding: 0.5em;
+}
+
+.codeblock .highlight pre {
+  margin: 0;
+}
+
+.highlight .c{color:#999988;font-style:italic}
+.highlight .err{color:#a61717;background-color:#e3d2d2}
+.highlight .k{font-weight:bold}
+.highlight .o{font-weight:bold}
+.highlight .cm{color:#999988;font-style:italic}
+.highlight .cp{color:#999999;font-weight:bold}
+.highlight .c1{color:#999988;font-style:italic}
+.highlight .cs{color:#999999;font-weight:bold;font-style:italic}
+.highlight .gd{color:#000000;background-color:#ffdddd}
+.highlight .gd .x{color:#000000;background-color:#ffaaaa}
+.highlight .ge{font-style:italic}
+.highlight .gr{color:#aa0000}
+.highlight .gh{color:#999999}
+.highlight .gi{color:#000000;background-color:#ddffdd}
+.highlight .gi .x{color:#000000;background-color:#aaffaa}
+.highlight .go{color:#888888}
+.highlight .gp{color:#555555}
+.highlight .gs{font-weight:bold}
+.highlight .gu{color:#800080;font-weight:bold}
+.highlight .gt{color:#aa0000}
+.highlight .kc{font-weight:bold}
+.highlight .kd{font-weight:bold}
+.highlight .kn{font-weight:bold}
+.highlight .kp{font-weight:bold}
+.highlight .kr{font-weight:bold}
+.highlight .kt{color:#445588;font-weight:bold}
+.highlight .m{color:#009999}
+.highlight .s{color:#d14}
+.highlight .na{color:#008080}
+.highlight .nb{color:#0086B3}
+.highlight .nc{color:#445588;font-weight:bold}
+.highlight .no{color:#008080}
+.highlight .ni{color:#800080}
+.highlight .ne{color:#990000;font-weight:bold}
+.highlight .nf{color:#990000;font-weight:bold}
+.highlight .nn{color:#555555}
+.highlight .nt{color:#000080}
+.highlight .nv{color:#008080}
+.highlight .ow{font-weight:bold}
+.highlight .w{color:#bbbbbb}
+.highlight .mf{color:#009999}
+.highlight .mh{color:#009999}
+.highlight .mi{color:#009999}
+.highlight .mo{color:#009999}
+.highlight .sb{color:#d14}
+.highlight .sc{color:#d14}
+.highlight .sd{color:#d14}
+.highlight .s2{color:#d14}
+.highlight .se{color:#d14}
+.highlight .sh{color:#d14}
+.highlight .si{color:#d14}
+.highlight .sx{color:#d14}
+.highlight .sr{color:#009926}
+.highlight .s1{color:#d14}
+.highlight .ss{color:#990073}
+.highlight .bp{color:#999999}
+.highlight .vc{color:#008080}
+.highlight .vg{color:#008080}
+.highlight .vi{color:#008080}
+.highlight .il{color:#009999}
+.highlight .gc{color:#999;background-color:#EAF2F5}
+
+@media screen, handheld {
+  html { margin: 1em; font: 14px Helvetica, simhei, sans-serif; }
+  h1 { margin-bottom: 0.5em }
+  div.cover, div.halftitlepage,
+  div.dedication, div.foreword, div.toc, div.index { display: none }
+}

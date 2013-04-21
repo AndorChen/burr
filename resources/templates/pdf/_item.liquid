@@ -1,0 +1,6 @@
+<div class="item {% block class %}{{ item.element }}{% endblock %}">
+  <h1 id="{{ item.element }}">{{ item.title }}</h1>
+  {% block content %}
+    {{ item.content }}
+  {% endblock %}
+</div>

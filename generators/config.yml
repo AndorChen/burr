@@ -1,0 +1,55 @@
+title:      'Sample Book'
+subtitle:   ''
+slug:       ''
+author:     'Your Name'
+translator: ''
+edition:    'First edition'
+language:   'zh_CN'
+publisher:  ''
+pubdate:    ''
+isbn:       ''
+identifier: '' # only for epub
+id_scheme:  '' # only for epub
+
+contents:
+  # available content types: acknowledgement, afterword, appendix, author,
+  # blank, chapter, conclusion, cover, dedication, edition, epilogue, foreword,
+  # glossary, introduction, license, lof (list of figures), lot (list of
+  # tables), part, preface, prologue, title, toc (table of contents)
+  - { element: cover }
+  - { element: toc   }
+  - { element: chapter, number: 1, file: chapter1.md }
+  - { element: chapter, number: 2, file: chapter2.md }
+
+formats:
+  pdf:
+    label:
+      deep:     3
+      elements: ['appendix', 'chapter', 'part'] # labels also available for: "figure", "table", "codeblock"
+    toc:
+      deep:     2
+      elements: ['appendix', 'chapter', 'part']
+
+  site:
+    label:
+      deep:     3
+      elements: ['appendix', 'chapter'] # labels also available for: "figure", "table", "codeblock"
+    toc:
+      deep:     2 # toc in single page
+      elements: ['appendix', 'chapter']
+
+  epub:
+    label:
+      deep:     3
+      elements: ['appendix', 'chapter', 'part'] # labels also available for: "figure", "table", "codeblock"
+    toc:
+      deep:     1
+      elements: ['appendix', 'chapter', 'part']
+
+  mobi:
+    label:
+      deep:     3
+      elements: ['appendix', 'chapter', 'part'] # labels also available for: "figure", "table", "codeblock"
+    toc:
+      deep:     1
+      elements: ['appendix', 'chapter', 'part']

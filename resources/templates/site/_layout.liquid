@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="{{ config.language }}">
+<head>
+	<meta charset="utf-8" />
+	<title>{% block title %}{{ config.title }}{% endblock %}</title>
+    <meta name="author" content="{% if config.translator %}{{ config.translator }}{% else %}{{ config.author }}{% endif %}" />
+    <meta name="date" content="{{ config.publication_date }}"/>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+	<div class="container">
+		{% block body %}{% endblock %}
+		{% block navigation %}
+			{% if item.pre or item.nxt %}
+			<div class="navigation">
+				{% if item.pre %}
+					<a class="prev_page" href="{{ item.pre_url }}">&laquo; {{ item.pre }}</a>
+				{% endif %}
+				{% if item.nxt %}
+					<a class="next_page" href="{{ item.nxt_url }}">{{ item.nxt }} &raquo;</a>
+				{% endif %}
+			</div>
+			{% endif %}
+		{% endblock %}
+	</div>
+</body>
+</html>

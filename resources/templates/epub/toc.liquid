@@ -1,0 +1,10 @@
+{% extends 'layout' %}
+
+{% block title %}{{ item.title }}{% endblock %}
+
+{% block body %}
+<div class="item toc">
+  <h1 id="toc">{{ item.title }}</h1>
+  {{ toc }}
+</div>
+{% endblock %}

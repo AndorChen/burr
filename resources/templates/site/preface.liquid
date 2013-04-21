@@ -1,0 +1,11 @@
+{% extends 'layout' %}
+
+{% block title %}{{ item.title }}{% endblock %}
+
+{% block body %}
+<div class="item preface">
+	<h1 id="{{ item.id }}"><span>{{ item.label }}</span> {{ item.title }}</h1>
+	{{ item.toc }}
+  	{{ item.content }}
+</div>
+{% endblock %}

@@ -1,0 +1,6 @@
+<div class="item cover">
+	{% if config.edition %}<p class="edition">{{ config.edition }}</p>{% endif %}
+    <h1>{{ config.title }}</h1>
+    {% if config.subtitle %}<h2>{{ config.subtitle }}</h2>{% endif %}
+    <h3>{{ config.author }}{% if config.translator %}&nbsp;&nbsp;{{ config.translator }}{% endif %}</h3>
+</div>
