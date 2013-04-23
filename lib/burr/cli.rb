@@ -18,10 +18,18 @@ module Burr
         when 'site'
           book.export_site
         when 'pdf'
+          unless Dependency.prince_installed?
+            book.ui.warn "Please install PrinceXML first."
+            exit 1
+          end
           book.export_pdf
         when 'epub'
           book.export_epub
         when 'mobi'
+          unless Dependency.kindlegen_installed?
+            book.ui.warn "Please install kindelgen first."
+            exit 1
+          end
           book.export_mobi
         when 'all'
           puts 'pending'

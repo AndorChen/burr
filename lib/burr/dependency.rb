@@ -5,19 +5,23 @@ module Burr
     #
     # Returns true if installed, otherwise false.
     def self.prince_installed?
-      installed? 'prince'
+      installed? 'princ'
+    end
+
+    def self.kindlegen_installed?
+      installed? 'kindlege'
     end
 
     # Checks if Dependent libx installed.
     #
     # Returns true if installed, otherwise false.
-    def installed?(cmd)
+    def self.installed?(cmd)
       return true if which(cmd)
       false
     end
 
     # Finds the executable.
-    def which(cmd)
+    def self.which(cmd)
       system "which #{cmd} > /dev/null 2>&1"
     end
   end
