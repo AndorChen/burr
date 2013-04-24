@@ -5,11 +5,11 @@ module Burr
     #
     # Returns true if installed, otherwise false.
     def self.prince_installed?
-      installed? 'princ'
+      installed? 'prince'
     end
 
     def self.kindlegen_installed?
-      installed? 'kindlege'
+      installed? 'kindlegen'
     end
 
     # Checks if Dependent libx installed.
