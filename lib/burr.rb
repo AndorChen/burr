@@ -36,6 +36,7 @@ require_all 'burr/plugins'
 require_all 'burr/liquid_ext'
 require_all 'burr/eeepub_ext'
 require 'burr/book'
+require 'burr/server'
 
 Encoding.default_internal = 'utf-8'
 Encoding.default_external = 'utf-8'

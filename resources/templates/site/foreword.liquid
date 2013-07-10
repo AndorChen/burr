@@ -6,6 +6,8 @@
 <div class="item foreword">
 	<h1 id="{{ item.id }}"><span>{{ item.label }}</span> {{ item.title }}</h1>
 	{{ item.toc }}
-  	{{ item.content }}
+  	<div class="main">
+  		{{ item.content }}
+  	</div>
 </div>
 {% endblock %}

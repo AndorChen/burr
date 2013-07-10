@@ -40,6 +40,11 @@ module Burr
       end
     end
 
+    desc 'server', 'Site preview'
+    def server
+      Burr::Server.start!
+    end
+
     desc 'version', 'Show the burr version'
     def version
       puts Burr::Version::STRING

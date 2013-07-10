@@ -52,7 +52,7 @@ module Burr
           item['nxt_url'] = get_html_path_of(nxt['element'], nxt['file'])
         end
 
-        File.open(get_html_path_of(item['element'], item['file']), 'w') do |f|
+        File.open(get_html_path_of(item['element'], item['file'], false), 'w') do |f|
           f.puts self.book.render(self.book.template_for(item['element']), { 'item' => item })
         end
       end
@@ -84,13 +84,16 @@ module Burr
       html << '</ol>'
     end
 
-    def get_html_path_of(element, path)
+    def get_html_path_of(element, path, relative = true)
       base = File.join(self.book.outputs_dir, 'site')
       basename = if path.blank?
         element
       else
         path.split('.')[0..-2].join('.')
       end
+
+      return "/#{ basename }.html" if relative
+
       File.join(base, "#{ basename }.html")
     end
 
