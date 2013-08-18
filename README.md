@@ -142,16 +142,15 @@ T> 夏天空调温度不要开的过低哟。
 
 #### 代码块
 
-kramdown 原生支持的代码块由 `~~~` 分隔，但常用 GitHub 的人习惯使用 `````，所以 burr 提供了对后者的支持。初次之外，因为计算机书籍经常会为代码块加入说明及所在文件位置，所以 burr 利用 kramdown 的 [Block Inline Attribute Lists](http://kramdown.rubyforge.org/syntax.html#block-ials) 实现了这一功能，使用方法如下：
+kramdown 原生支持的代码块由 `~~~` 分隔，但我更习惯使用 GitHub 的句法，所以 burr 提供了对后者的支持。除此之外，因为计算机书籍经常会为代码块加入说明及所在文件位置，所以 burr 利用 kramdown 的 [Block Inline Attribute Lists](http://kramdown.rubyforge.org/syntax.html#block-ials) 实现了这一功能，使用方法如下：
 
-```
-```ruby
-def hello
-  puts "Hello, burr!"
-end
-```
-{:caption="Ruby 方法定义示例" file="/path/to/file.rb"}
-```
+
+	```ruby
+	def hello
+  	  puts "Hello, burr!"
+	end
+	```
+	{:caption="Ruby 方法定义示例" file="/path/to/file.rb"}
 
 代码高亮通过 [pygments.rb](https://github.com/tmm1/pygments.rb) 实现。
 
