@@ -1,5 +1,7 @@
 # burr
 
+[![Dependency Status](https://gemnasium.com/AndorChen/burr.png)](https://gemnasium.com/AndorChen/burr)
+
 burr 是一个电子书制作工具（命令行）。使用 Markdown 编写书籍内容，burr 可以将其转换成 PDF，ePub 和 Mobi 格式电子书。还能生成 HTML 格式，提供书籍在线阅读。
 
 ## 目的
