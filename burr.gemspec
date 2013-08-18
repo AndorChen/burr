@@ -25,12 +25,12 @@ Gem::Specification.new do |s|
   s.rdoc_options = ["--charset=UTF-8"]
   s.extra_rdoc_files = %w[README.md LICENSE.md]
 
-  s.add_runtime_dependency('nokogiri',    '1.6.0')
-  s.add_runtime_dependency('thor',        '0.18.1')
-  s.add_runtime_dependency('liquid',      '2.5.0')
-  s.add_runtime_dependency('kramdown',    '1.0.2')
-  s.add_runtime_dependency('pygments.rb', '0.5.0')
-  s.add_runtime_dependency('eeepub',      '0.8.1')
+  s.add_runtime_dependency('nokogiri',    '~> 1.6.0')
+  s.add_runtime_dependency('thor',        '~> 0.18.1')
+  s.add_runtime_dependency('liquid',      '~> 2.5.0')
+  s.add_runtime_dependency('kramdown',    '~> 1.1.0')
+  s.add_runtime_dependency('pygments.rb', '~> 0.5.2')
+  s.add_runtime_dependency('eeepub',      '~> 0.8.1')
 
   s.files = `git ls-files`.split($/)
 end
