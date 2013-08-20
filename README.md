@@ -16,6 +16,13 @@ burr 是一个电子书制作工具（命令行）。使用 Markdown 编写书�
 
 ## 特性
 
+### 整体
+
+- 章节自动编号；
+- 图片自动编号；
+- 表格自动编号；
+- 代码片段自动编号；
+
 ### PDF 格式
 
 - 自动生成目录；
@@ -153,6 +160,12 @@ kramdown 原生支持的代码块由 `~~~` 分隔，但我更习惯使用 GitHub
 	{:caption="Ruby 方法定义示例" file="/path/to/file.rb"}
 
 代码高亮通过 [pygments.rb](https://github.com/tmm1/pygments.rb) 实现。
+
+### 图片题注
+
+```text
+![alt text](path/to/image.jpg){:caption="示例图片"}
+```
 
 ## 作者
 
