@@ -23,8 +23,10 @@ module Burr
 
         if href.start_with?('#chapter')
           new_href = "chapter#{parts[1]}.html"
-        else
+        elsif href.start_with?('#section', '#figure', '#codeblock', '#table', '#aside')
           new_href = "chapter#{parts[1]}.html#{parts.join('-')}"
+        else
+          new_href = "#{href[1..-1]}.html"
         end
 
         link['href'] = new_href
