@@ -10,7 +10,7 @@ chapter:
   - '第 {{ item.number }} 章'
   - '{{ item.counters | join:"." }}' # 1.1
 
-part:            'Part {{ item.number }}'
+part:            '第 {{ item.number }} 部分：'
 figure:          '图 {{ item.number }}.{{ item.counter }}：'
 table:           '表格 {{ item.number }}.{{ item.counter }}：'
 codeblock:       '代码 {{ item.number }}.{{ item.counter }}：'
