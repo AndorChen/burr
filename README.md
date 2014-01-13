@@ -96,6 +96,16 @@ gem 'burr', git:'git@github.com:AndorChen/burr.git'
      |- code/
 ```
 
+### 安装gem
+
+在项目的Gemfile中增加:
+
+```ruby
+gem 'rubyzip', '< 1.0.0'
+```
+
+执行`bundle`
+
 ### 生成电子书
 
 ```sh
