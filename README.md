@@ -67,7 +67,7 @@ burr 是一个 Ruby gem，可以像其他 gem 一样安装。但是由于没有�
 在项目的 `Gemfile` 中加入以下代码：
 
 ```ruby
-gem 'burr'
+gem 'burr', git:'git@github.com:AndorChen/burr.git'
 ```
 
 然后执行 `bundle` 命令安装。
