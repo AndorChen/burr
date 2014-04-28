@@ -159,7 +159,7 @@ kramdown 原生支持的代码块由 `~~~` 分隔，但我更习惯使用 GitHub
 	```
 	{:caption="Ruby 方法定义示例" file="/path/to/file.rb"}
 
-代码高亮通过 [pygments.rb](https://github.com/tmm1/pygments.rb) 实现。
+代码高亮通过 [rouge](http://rubygems.org/gems/rouge) 实现。
 
 ### 图片题注
 
