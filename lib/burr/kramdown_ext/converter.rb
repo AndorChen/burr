@@ -1,5 +1,5 @@
 require 'burr/kramdown_ext/parser'
-require 'pygments'
+require 'burr/rouge_ext/html_formatter'
 
 module Kramdown
   module Converter
@@ -27,15 +27,10 @@ module Kramdown
       def convert_codeblock(el, indent)
         attr = el.attr.dup
         lang = extract_code_language!(attr)
-        lang = 'text' if lang.blank?
 
-        pyg_opts = {
-          :encoding => 'utf-8',
-          :cssclass => "highlight type-#{lang}"
-        }
         caption = attr['caption']
         file    = attr['file']
-        code = ::Pygments.highlight(el.value, :lexer => lang, :options => pyg_opts).chomp << "\n"
+        code = rouge_highlight(el.value, lang)
         output = '<div class="codeblock'
         output << ' has-caption' if caption
         output << '">'
@@ -138,6 +133,15 @@ module Kramdown
         caption_html = inner(caption_el.children.first, 0)
 
         "<div class=\"figure\">#{img_html}<p class=\"caption\">#{caption_html}</p></div>"
+      end
+
+      def rouge_highlight(text, lexer, &b)
+        lexer = ::Rouge::Lexer.find(lexer) unless lexer.respond_to? :lex
+        lexer = ::Rouge::Lexers::PlainText unless lexer
+
+        formatter = ::Rouge::Formatters::BHTML.new(css_class: "highlight type-#{lexer.tag}")
+
+        formatter.format(lexer.lex(text), &b)
       end
 
     end
