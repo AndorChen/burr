@@ -31,6 +31,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency('kramdown',    '~> 1.3.3')
   s.add_runtime_dependency('rouge',       '~> 1.3.3')
   s.add_runtime_dependency('eeepub',      '~> 0.8.1')
+  s.add_runtime_dependency('rubyzip', '< 1.0.0')
 
   s.files = `git ls-files`.split($/)
 end
