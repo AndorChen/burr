@@ -92,7 +92,7 @@ module Burr
         path.split('.')[0..-2].join('.')
       end
 
-      return "/#{ basename }.html" if relative
+      return "./#{ basename }.html" if relative
 
       File.join(base, "#{ basename }.html")
     end
